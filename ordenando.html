@@ -5,20 +5,102 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ordenando</title>
     <script src="ordenando.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        button {
+            border: none;
+            background-color: blue;
+            color: #fff;
+        }
+
+        .flex {
+            display: flex;
+        }
+
+        .flex-col {
+            flex-direction: column;
+        }
+
+        .items-start {
+            align-items: flex-start;
+        }
+
+        .gap-4 {
+            gap: 16px;
+        }
+
+        .gap-2 {
+            gap: 8px;
+        }
+
+        .py-2 {
+            padding-top: 8px;
+            padding-bottom: 8px;
+        }
+
+        .py-4 {
+            padding-top: 16px;
+            padding-bottom: 16px;
+        }
+
+        .py-10 {
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+
+        .px-4 {
+            padding-left: 16px;
+            padding-right: 16px;
+        }
+
+        .px-10 {
+            padding-left: 40px;
+            padding-right: 40px;
+        }
+
+        .rounded-lg {
+            border-radius: 8px;
+        }
+
+        .border-bottom {
+            border-bottom: 1px solid #ccc;
+        }
+
+        .w-full {
+            width: 100%;
+        }
+    </style>
 </head>
-<body>
+<body class="flex flex-col items-start gap-4 px-10 py-10">
 
-    <input type="number" id="valor" placeholder="Digite um número">
-    <button onclick="add()">Adicionar</button>
+    <h1>Ordenando Valores</h1>
 
-    <select id="algoritmo">
-        <option value="bubble">Bubble Sort</option>
-        <option value="selection">Selection Sort</option>
-        <option value="quick">Quick Sort</option>
-    </select>
+    <div class="flex flex-col gap-4 border-bottom py-4">
+        <div class="flex flex-col items-start gap-2">
+            <label for="">Valor</label>
+            <input class="py-2 px-4 rounded-lg" type="number" id="valor" placeholder="Digite um número">
+        </div>
+        <button onclick="add()" class="py-2 px-4 rounded-lg">Adicionar</button>
+    </div>
 
-    <button onclick="ordenar()">Ordenar</button>
-    <button onclick="misturar()">Misturar</button>
+
+    <div class="flex flex-col gap-4 border-bottom py-2">
+        <select id="algoritmo" class="px-4 py-4 w-full">
+            <option value="bubble">Bubble Sort</option>
+            <option value="selection">Selection Sort</option>
+            <option value="quick">Quick Sort</option>
+        </select>
+
+        <div class="flex gap-4">
+            <button onclick="ordenar()" class="py-2 px-4 rounded-lg">Ordenar</button>
+            <button onclick="misturar()" class="py-2 px-4 rounded-lg">Misturar</button>
+        </div>
+    </div>
 
     <ul id="valores"></ul>
 

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo de Receitas</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body onload="preencheCatalogo()">
+
+    <div class="container-fluid bg-warning">
+        <h1 class="text-center">Catálogo de Receitas</h1>
+        <div class="d-flex flex-wrap" id="pnlCatalogo"></div>
+    </div>
+
+    <script>
+        const receitas = [
+            {
+                titulo: "Arroz de Couve-Flor",
+                imagem: "arroz_de_couve_flor.png",
+                preparo: "Deixe a couve-flor picada. Adicione os ingredientes e refogue bem. Adicione sal, tampe a panela e deixe cozinhar.",
+                ingredientes: ["Arroz", "Couve-flor", "Cebola Média", "Azeite"],
+            },
+            {
+                titulo: "Bolo de Café",
+                imagem: "bolo_de_cafe.png",
+                preparo: "Monte as camadas e leve ao forno por 30 minutos.",
+                ingredientes: ["Farinha de trigo", "Açucar", "Café coado", "Chocolate em pó", "Ovos"],
+            },
+            {
+                titulo: "Coxinha de brigadeiro",
+                imagem: "coxinha_de_brigadeiro.png",
+                preparo: "Junte o leite condensado, chocolate em pó e manteiga. Aqueça no fogo baixo. Envolva os morangos e passe no granulado.",
+                ingredientes: ["Leite Condensado", "Chocolate em pó", "Manteiga", "Morango", "Chocolate Granulado"],
+            },
+        ];
+
+        function getListaIngredientes(receita) {
+            return `<ul>${receita.ingredientes.map(ing => `<li>${ing}</li>`).reduce((acc, li) => acc + li, '')}</ul>`;
+        }
+
+        function getCard(receita) {
+            return `
+                <div class="card" style="width: 250px; margin: 10px;">
+                    <img src="${receita.imagem}" class="card-img-top" alt="${receita.titulo}">
+                    <div class="card-body">
+                        <h5 class="card-title">${receita.titulo}</h5>
+                        <div class="card-text">
+                            ${getListaIngredientes(receita)}
+                            <hr>
+                            ${receita.preparo}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function preencheCatalogo() {
+            const catalogo = document.getElementById('pnlCatalogo');
+            catalogo.innerHTML = receitas.map(receita => getCard(receita)).reduce((acc, card) => acc + card, '');
+        }
+    </script>
+
+</body>
+</html>
